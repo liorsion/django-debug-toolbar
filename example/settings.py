@@ -1,5 +1,9 @@
 import os
+import sys
+
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+
+sys.path.append(os.path.join(PROJECT_PATH, '..'))
 
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 DATABASE_ENGINE = 'sqlite3'
@@ -12,6 +16,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'debug_toolbar',
+    'example',
 )
 INTERNAL_IPS = ('127.0.0.1',)
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
@@ -32,16 +37,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 TEMPLATE_DEBUG = DEBUG
 TEMPLATE_DIRS = (os.path.join(PROJECT_PATH, 'templates'))
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.version.VersionDebugPanel',
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.profiling.ProfilingDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    #'debug_toolbar.panels.cache.CacheDebugPanel',
-    'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
+
+DEBUG_TOOLBAR_DEV_MODE = False

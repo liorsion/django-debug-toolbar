@@ -17,6 +17,8 @@ Currently, the following panels have been written and are working:
 - SQL queries including time to execute and links to EXPLAIN each query
 - List of signals, their args and receivers
 - Logging output via Python's built-in logging, or via the `logbook <http://logbook.pocoo.org>`_ module
+- State of available objects in the project - how much objects was created/udpated/deleted
+- Added HTML Validator panel which provide list of HTML warnings/errors on the page
 
 There is also one Django management command currently:
 
@@ -31,6 +33,12 @@ Installation
 ============
 
 #. Add the `debug_toolbar` directory to your Python path.
+
+#. Execute
+
+        ``pip install pytidylib``
+
+   *pytidylib required only for `HTMLValidationDebugPanel`*
 
 #. Add the following middleware to your project's `settings.py` file:
 
@@ -87,6 +95,8 @@ The debug toolbar has two settings that can be set in `settings.py`:
 	    'debug_toolbar.panels.sql.SQLDebugPanel',
 	    'debug_toolbar.panels.signals.SignalDebugPanel',
 	    'debug_toolbar.panels.logger.LoggingPanel',
+	    'debug_toolbar.panels.state.StateDebugPanel',
+	    'debug_toolbar.panels.htmlvalidator.HTMLValidationDebugPanel',
 	)
 
    You can change the ordering of this tuple to customize the order of the
